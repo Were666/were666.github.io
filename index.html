@@ -1070,7 +1070,7 @@
         var URL = URLsearch[1];
         //console.log(URLsearch[0]);
         console.log(URL);
-        console.log(window.location.host + '/auth/auth.php');
+        //console.log(window.location.host + '/auth/auth.php');
         /* Hacer un ajax enviando
             - app_id = 530986217627069
             - app_secret = 39a7762b51759e6883aae7c31ec82124
@@ -1081,11 +1081,12 @@
 
             Esto devolvera un JSON con el token (1 hora) y un id de usuario que habra que convertir en token de larga duracion (60 dias)
         */
-        var data = new FormData();
+        /*var data = new FormData();
         data.append('app_id', '530986217627069');
         data.append('app_secret', '39a7762b51759e6883aae7c31ec82124');
         data.append('redirect_url', 'https://were666.github.io/');
         data.append('code', URL);
+        /*
         $.ajax({
           url: 'https://were666.github.io/auth/auth.php',
           data: data,
@@ -1096,7 +1097,13 @@
           success: function(res){
             console.log(res);
           }
-        });
+        });*/
+
+        $.getJSON(
+            'https://api.instagram.com/oauth/access_token?app_id=530986217627069&app_secret=39a7762b51759e6883aae7c31ec82124&redirect_url=https://were666.github.io/&code='+URL, function(data){ 
+                if(data)console.log(data); 
+            }
+        );
     }
 </script>
 
