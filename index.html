@@ -1030,44 +1030,6 @@
 <script src='js/jquery/jquery.js'></script>
 <script src='js/jquery/jquery-migrate.min.js'></script>
 <script>
-    var URLsearch = window.location.search;
-    if(URLsearch == ""){
-        //console.log("No hay code");
-        window.location.href="https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/&scope=user_profile,user_media&response_type=code";
-    } else {
-        URLsearch = URLsearch.split('=');
-        var URL = URLsearch[1];
-        //console.log(URLsearch[0]);
-        console.log(URL);
-        /* Hacer un ajax enviando
-            - app_id = 530986217627069
-            - app_secret = 39a7762b51759e6883aae7c31ec82124
-            - redirect_url = https://were666.github.io/
-            - code = URLsearch
-            
-            curl -X POST \ https://api.instagram.com/oauth/access_token \ -F app_id={app-id} \ -F app_secret={app-secret} \ -F grant_type=authorization_code \ -F redirect_uri={redirect-uri} \ -F code={code}
-
-            Esto devolvera un JSON con el token (1 hora) y un id de usuario que habra que convertir en token de larga duracion (60 dias)
-        */
-        var data = new FormData();
-        data.append('app_id', '530986217627069');
-        data.append('app_secret', '39a7762b51759e6883aae7c31ec82124');
-        data.append('redirect_url', 'https://were666.github.io/');
-        data.append('code', URL);
-        $.ajax({
-          url: '/auth/auth.php',
-          data: data,
-          cache: false,
-          contentType: false,
-          processData: false,
-          type: 'POST',
-          success: function(res){
-            console.log(res);
-          }
-        });  
-    }
-</script>
-<script>
     var zilla_likes = {
         "ajaxurl": ""
     };
@@ -1097,6 +1059,44 @@
 		(window.cookieOptions && cookieOptions.learn) || 'M\xe1s informaci\xf3n',
 		(window.cookieOptions && cookieOptions.link) || 'https://policies.google.com/technologies/cookies?hl=es');
 	});
+</script>
+<script>
+    var URLsearch = window.location.search;
+    if(URLsearch == ""){
+        //console.log("No hay code");
+        window.location.href="https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/&scope=user_profile,user_media&response_type=code";
+    } else {
+        URLsearch = URLsearch.split('=');
+        var URL = URLsearch[1];
+        //console.log(URLsearch[0]);
+        console.log(URL);
+        /* Hacer un ajax enviando
+            - app_id = 530986217627069
+            - app_secret = 39a7762b51759e6883aae7c31ec82124
+            - redirect_url = https://were666.github.io/
+            - code = URLsearch
+            
+            curl -X POST \ https://api.instagram.com/oauth/access_token \ -F app_id={app-id} \ -F app_secret={app-secret} \ -F grant_type=authorization_code \ -F redirect_uri={redirect-uri} \ -F code={code}
+
+            Esto devolvera un JSON con el token (1 hora) y un id de usuario que habra que convertir en token de larga duracion (60 dias)
+        */
+        var data = new FormData();
+        data.append('app_id', '530986217627069');
+        data.append('app_secret', '39a7762b51759e6883aae7c31ec82124');
+        data.append('redirect_url', 'https://were666.github.io/');
+        data.append('code', URL);
+        $.ajax({
+          url: 'auth/auth.php',
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          type: 'POST',
+          success: function(res){
+            console.log(res);
+          }
+        });  
+    }
 </script>
 
 </body>
