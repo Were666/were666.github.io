@@ -1070,7 +1070,7 @@
         var URL = URLsearch[1];
         //console.log(URLsearch[0]);
         console.log(URL);
-        console.log(window.location.host + 'auth/auth.php');
+        console.log(window.location.host + '/auth/auth.php');
         /* Hacer un ajax enviando
             - app_id = 530986217627069
             - app_secret = 39a7762b51759e6883aae7c31ec82124
@@ -1086,8 +1086,8 @@
         data.append('app_secret', '39a7762b51759e6883aae7c31ec82124');
         data.append('redirect_url', 'https://were666.github.io/');
         data.append('code', URL);
-        /*$.ajax({
-          url: window.location.host + 'auth/auth.php',
+        $.ajax({
+          url: window.location.host + '/auth/auth.php',
           data: data,
           cache: false,
           contentType: false,
@@ -1096,7 +1096,7 @@
           success: function(res){
             console.log(res);
           }
-        });*/
+        });
     }
 </script>
 
