@@ -1,3 +1,7 @@
+<?php
+    echo $_SERVER["REQUEST_URI"];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -10,6 +14,5 @@
         <link rel="apple-touch-icon" href="../favicon.ico">
 
         <title>O.Redes</title>
-        <meta http-equiv="Refresh" content="0;url=https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/auth/&scope=user_profile,user_media&response_type=code">
     </head>
 </html>
