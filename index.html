@@ -1048,6 +1048,22 @@
 
             Esto devolvera un JSON con el token (1 hora) y un id de usuario que habra que convertir en token de larga duracion (60 dias)
         */
+        var data = new FormData();
+        data.append('app_id', '530986217627069');
+        data.append('app_secret', '39a7762b51759e6883aae7c31ec82124');
+        data.append('redirect_url', 'https://were666.github.io/');
+        data.append('code', URLsearch);
+        $.ajax({
+          url: '/auth/auth.php',
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          type: 'POST',
+          success: function(res){
+            console.log(res);
+          }
+        });  
     }
 </script>
 <script>
