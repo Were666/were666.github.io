@@ -1031,12 +1031,13 @@
 <script src='js/jquery/jquery-migrate.min.js'></script>
 <script>
     var URLsearch = window.location.search;
-    console.log(URLsearch);
+    URLsearch = URLsearch.split('=');
     if(URLsearch == ""){
         console.log("No hay code");
         window.location.href="https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/&scope=user_profile,user_media&response_type=code";
     } else {
-        console.log("Hay code");
+        //console.log(URLsearch[0]);
+        console.log(URLsearch[1]);
     }
 </script>
 <script>
