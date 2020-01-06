@@ -1027,7 +1027,7 @@
     </div>
 </div>
 
-<script src='js/jquery/jquery_2.js'></script>
+<script src='js/jquery/jquery.js'></script>
 <script src='js/jquery/jquery-migrate.min.js'></script>
 <script>
     var zilla_likes = {
@@ -1061,19 +1061,16 @@
 	});
 </script>
 <script>
-    var code;
-    $.ajax({
-        url : "code",
-        dataType: "text",
-        success : function (data) {
-            //console.log(data);
-            code = data;
-        }
-    });
-
-    console.log(code);
-    //window.location.href="https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/&scope=user_profile,user_media&response_type=code";
-    /* Hacer un ajax enviando
+    var URLsearch = window.location.search;
+    if(URLsearch == ""){
+        //console.log("No hay code");
+        window.location.href="https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/&scope=user_profile,user_media&response_type=code";
+    } else {
+        URLsearch = URLsearch.split('=');
+        var URL = URLsearch[1];
+        console.log(URL);
+        //console.log(window.location.host + '/auth/auth.php');
+        /* Hacer un ajax enviando
             - app_id = 530986217627069
             - app_secret = 39a7762b51759e6883aae7c31ec82124
             - redirect_url = https://were666.github.io/
@@ -1082,7 +1079,43 @@
             curl -X POST \ https://api.instagram.com/oauth/access_token \ -F app_id={app-id} \ -F app_secret={app-secret} \ -F grant_type=authorization_code \ -F redirect_uri={redirect-uri} \ -F code={code}
 
             Esto devolvera un JSON con el token (1 hora) y un id de usuario que habra que convertir en token de larga duracion (60 dias)
-    */
+        */
+        /*var data = new FormData();
+        data.append('app_id', '530986217627069');
+        data.append('app_secret', '39a7762b51759e6883aae7c31ec82124');
+        data.append('redirect_url', 'https://were666.github.io/');
+        data.append('code', URL);
+        /*
+        $.ajax({
+          url: 'https://were666.github.io/auth/auth.php',
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          type: 'POST',
+          success: function(res){
+            console.log(res);
+          }
+        });*/
+
+        /*$.getJSON(
+            'https://api.instagram.com/oauth/access_token?app_id=530986217627069&app_secret=39a7762b51759e6883aae7c31ec82124&redirect_url=https://were666.github.io/&code='+URL, function(data){ 
+                if(data)console.log(data); 
+            }
+        );*/
+
+        $.post('https://api.instagram.com/oauth/access_token',
+            {
+                app_id: '530986217627069',
+                app_secret: '39a7762b51759e6883aae7c31ec82124',
+                redirect_url: 'https://were666.github.io/',
+                code: URL
+            },
+            function(data){
+                console.log(data); //process the JSON data etc 
+            }
+        )
+    }
 </script>
 
 </body>
