@@ -1087,8 +1087,8 @@
         data.append('redirect_url', 'https://were666.github.io/');
         data.append('code', URL);
         
-        /*$.ajax({
-          url: 'https://were666.github.io/auth/auth.php',
+        $.ajax({
+          url: window.location.href + '/auth/auth.php',
           data: data,
           cache: false,
           contentType: false,
@@ -1097,7 +1097,7 @@
           success: function(res){
             console.log(res);
           }
-        });*/
+        });
     }
 </script>
 
