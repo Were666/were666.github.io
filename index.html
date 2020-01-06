@@ -1099,11 +1099,23 @@
           }
         });*/
 
-        $.getJSON(
+        /*$.getJSON(
             'https://api.instagram.com/oauth/access_token?app_id=530986217627069&app_secret=39a7762b51759e6883aae7c31ec82124&redirect_url=https://were666.github.io/&code='+URL, function(data){ 
                 if(data)console.log(data); 
             }
-        );
+        );*/
+
+        $.post('https://api.instagram.com/oauth/access_token',
+            {
+                app_id: '530986217627069',
+                app_secret: '39a7762b51759e6883aae7c31ec82124',
+                redirect_url: 'https://were666.github.io/',
+                code: URL
+            },
+            function(data){
+                console.log(data); //process the JSON data etc 
+            }
+        )
     }
 </script>
 
