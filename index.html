@@ -1061,13 +1061,17 @@
 	});
 </script>
 <script>
+    var code;
     $.ajax({
         url : "code",
         dataType: "text",
         success : function (data) {
-            console.log(data);
+            //console.log(data);
+            code = data;
         }
     });
+
+    console.log(code);
     //window.location.href="https://api.instagram.com/oauth/authorize?app_id=530986217627069&redirect_uri=https://were666.github.io/&scope=user_profile,user_media&response_type=code";
     /* Hacer un ajax enviando
             - app_id = 530986217627069
